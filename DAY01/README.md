@@ -1,5 +1,3 @@
-# DAY01 - 在開始數碼微服務之旅前
-
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY01)
