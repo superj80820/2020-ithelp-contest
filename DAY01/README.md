@@ -1,10 +1,10 @@
-# 在開始數碼微服務之旅前
+# DAY01 - 在開始數碼微服務之旅前
 
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY01)
-- [Medium]()
-- [iT 邦幫忙]()
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day01-%E5%9C%A8%E9%96%8B%E5%A7%8B%E6%95%B8%E7%A2%BC%E5%BE%AE%E6%9C%8D%E5%8B%99%E4%B9%8B%E6%97%85%E5%89%8D-f00b950c4f04)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10234832)
 
 ---
 
