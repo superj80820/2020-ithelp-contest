@@ -1,8 +1,8 @@
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY03)
-- [Medium]()
-- [iT 邦幫忙]()
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day3-docker-%E5%9C%A8%E6%89%8B-%E6%9C%8D%E5%8B%99%E5%B8%B6%E8%91%97%E8%B5%B0-docker-%E7%AF%87-4df722084265)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10237717)
 
 ```
 文章為自己的經驗與夥伴整理的內容，設計沒有標準答案，如有可以改進的地方，請告訴我，我會盡我所能的修改，謝謝大家～
