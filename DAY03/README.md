@@ -1,6 +1,6 @@
 本文章同時發佈於：
 
-- [Github(包含程式碼)]()
+- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY03)
 - [Medium]()
 - [iT 邦幫忙]()
 
@@ -14,7 +14,9 @@
 
 ## 所需的架構
 
-![](./digimon-service.drawio.png)
+[//]: # "(./digimon-service.drawio.png)"
+
+![](https://i.imgur.com/fRsQy4d.png)
 
 此 Service 的設計並不複雜，單純以一個 Restful API Golang Server 配合一個 PostgreSQL 資料庫來實作。
 
@@ -59,6 +61,8 @@
 - [Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 透過 Docker 啟動 PostgreSQL
+
+[Example code](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY03)
 
 現在 Docker 已經是一門顯學，直接用 Google 搜尋`PostgreSQL DockerHub`就可以找到[官方](https://hub.docker.com/_/postgres)已將程式與資源包裝起來的 docker image。
 
