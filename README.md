@@ -9,7 +9,7 @@
 1. [DAY1 - 在開始數碼微服務之旅前](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY01)
 2. [DAY2 - 微服務真的有那麼好？你的 Backend 有需要進化成他嗎？](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY02)
 3. [DAY3 - Docker 在手，服務帶著走 - Docker 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY03)
-4. [DAY4 - Docker-Compose 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY04)
+4. [DAY4 - 今晚，我想來點 Golang Server 加 PostgreSQL - Docker-Compose 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY04)
 
 ## 想法
 
