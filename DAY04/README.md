@@ -1,8 +1,8 @@
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY04)
-- [Medium]()
-- [iT 邦幫忙]()
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day4-%E4%BB%8A%E6%99%9A-%E6%88%91%E6%83%B3%E4%BE%86%E9%BB%9E-golang-server-%E5%8A%A0-postgresql-docker-compose-%E7%AF%87-21f8cb625ed)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10239305)
 
 ```
 文章為自己的經驗與夥伴整理的內容，設計沒有標準答案，如有可以改進的地方，請告訴我，我會盡我所能的修改，謝謝大家～
@@ -14,7 +14,9 @@
 
 ## 為何需要 Docker-Compose ?
 
-![](./digimon-service.drawio.png)
+[//]: # "(./digimon-service.drawio.png)"
+
+![](https://i.imgur.com/DWOgVSr.png)
 
 還記得昨天的 Service 架構圖嗎？裡頭除了 PostgreSQL 以外還有 Golang Server，我們一樣可以透過 Docker 來對 Golang Server 的環境做封裝，以提供所有的開發人員都在同一個環境開發。
 

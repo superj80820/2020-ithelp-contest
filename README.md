@@ -11,23 +11,6 @@
 3. [DAY3 - Docker 在手，服務帶著走 - Docker 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY03)
 4. [DAY4 - 今晚，我想來點 Golang Server 加 PostgreSQL - Docker-Compose 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY04)
 
-## 想法
-
-- 將數碼蛋傳送到第二個微服務: 神聖計畫吧！ - gRPC 篇 part 1(單向)
-- 將數碼蛋傳送到第二個微服務: 神聖計畫吧！ - gRPC 篇 part 2(雙向)
-- 將數碼蛋傳送到第二個微服務: 神聖計畫吧！ - gRPC 篇 part 3(中間件)
-- 將 gRPC 帶回人類的前端世界 - gRPC-Web 篇
-- 連接不同世界的橋樑: envoy
-- Install k8s
-- Why need Istio
-- Install Istio
-- 部署 orService discover?
-- Istio ziping
-- nats
-- redis
-- scaling
-- k8s auto update
-
 ## 參考文章
 
 - [Istio Observability with Go, gRPC, and Protocol Buffers-based Microservices | Programmatic Ponderings](https://programmaticponderings.com/2019/04/17/istio-observability-with-go-grpc-and-protocol-buffers-based-microservices/)
