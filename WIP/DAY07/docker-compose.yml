@@ -1,0 +1,21 @@
+version: "3.5"
+
+services:
+  server:
+    image: golang:1.14.6-alpine
+    volumes:
+      - .:/server
+    working_dir: /server/go-server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    entrypoint: go run main.go
+    restart: always
+  db:
+    image: postgres:9.6.5-alpine
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./go-server/initdb.sh:/docker-entrypoint-initdb.d/init.sh

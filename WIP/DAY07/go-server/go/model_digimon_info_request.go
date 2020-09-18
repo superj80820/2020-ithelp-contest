@@ -8,7 +8,7 @@
  */
 package swagger
 
-type Body struct {
+type DigimonInfoRequest struct {
 	// 數碼蛋的名字
 	Name string `json:"name"`
 }

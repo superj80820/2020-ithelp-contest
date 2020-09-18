@@ -50,3 +50,17 @@ func (_m *DigimonRepository) Store(ctx context.Context, d *domain.Digimon) error
 
 	return r0
 }
+
+// UpdateStatus provides a mock function with given fields: ctx, d
+func (_m *DigimonRepository) UpdateStatus(ctx context.Context, d *domain.Digimon) error {
+	ret := _m.Called(ctx, d)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, *domain.Digimon) error); ok {
+		r0 = rf(ctx, d)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}

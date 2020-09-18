@@ -9,24 +9,59 @@
 package main
 
 import (
-	"log"
-	"net/http"
+	"database/sql"
+	"fmt"
+	_dietRepo "go-server/diet/repository/postgresql"
+	_dietUsecase "go-server/diet/usecase"
+	_digimonHandlerHttpDelivery "go-server/digimon/delivery/http"
+	_digmonRepo "go-server/digimon/repository/postgresql"
+	_digimonUsecase "go-server/digimon/usecase"
 
-	// WARNING!
-	// Change this to a fully-qualified import path
-	// once you place this file into your project.
-	// For example,
-	//
-	//    sw "github.com/myname/myrepo/go"
-	//
+	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 
-	sw "go-server/go"
+	_ "github.com/lib/pq"
 )
 
+func init() {
+	viper.SetConfigFile(".env")
+	viper.SetConfigType("dotenv")
+	if err := viper.ReadInConfig(); err != nil {
+		logrus.Fatal("Fatal error config file: %v\n", err)
+	}
+}
+
 func main() {
-	log.Printf("Server started")
+	logrus.Info("HTTP server started")
 
-	router := sw.NewRouter()
+	restfulHost := viper.GetString("RESTFUL_HOST")
+	restfulPort := viper.GetString("RESTFUL_PORT")
+	dbHost := viper.GetString("DB_HOST")
+	dbDatabase := viper.GetString("DB_DATABASE")
+	dbUser := viper.GetString("DB_USER")
+	dbPassword := viper.GetString("DB_PASSWORD")
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	db, err := sql.Open(
+		"postgres",
+		fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", dbHost, dbUser, dbPassword, dbDatabase),
+	)
+	if err != nil {
+		logrus.Fatal(err)
+	}
+	if err = db.Ping(); err != nil {
+		logrus.Fatal(err)
+	}
+
+	r := gin.Default()
+
+	digimonRepo := _digmonRepo.NewpostgresqlDigimonRepository(db)
+	dietRepo := _dietRepo.NewPostgresqlDietRepository(db)
+
+	digimonUsecase := _digimonUsecase.NewDigimonUsecase(digimonRepo)
+	dietUsecase := _dietUsecase.NewDietUsecase(dietRepo)
+
+	_digimonHandlerHttpDelivery.NewDigimonHandler(r, digimonUsecase, dietUsecase)
+
+	logrus.Fatal(r.Run(restfulHost + ":" + restfulPort))
 }

@@ -8,7 +8,7 @@
  */
 package swagger
 
-type Body1 struct {
+type FosterRequest struct {
 
-	Foot *DigimonsdigimonIDfosterFoot `json:"foot,omitempty"`
+	Food *FosterRequestFood `json:"food,omitempty"`
 }

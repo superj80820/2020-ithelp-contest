@@ -22,7 +22,7 @@
 
 [//]: # "york TODO: 補充連結"
 
-進到[DAY06-example]()的資料夾，使用 docker 運行以下指令:
+進到[DAY07-example]()的資料夾，使用 docker 運行以下指令:
 
 ```bash
 $ docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \

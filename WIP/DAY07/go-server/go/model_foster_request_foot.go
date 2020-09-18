@@ -9,7 +9,7 @@
 package swagger
 
 // 培育所使用的食物
-type DigimonsdigimonIDfosterFoot struct {
+type FosterRequestFoot struct {
 	// 食物名稱
 	Name string `json:"name,omitempty"`
 }
