@@ -4,6 +4,8 @@ import (
 	"context"
 
 	"go-server/domain"
+
+	"github.com/sirupsen/logrus"
 )
 
 type digimonUsecase struct {
@@ -18,9 +20,18 @@ func NewDigimonUsecase(digimonRepo domain.DigimonRepository) domain.DigimonUseca
 }
 
 func (du *digimonUsecase) GetByID(ctx context.Context, id string) (*domain.Digimon, error) {
-	return nil, nil
+	aDigimon, err := du.digimonRepo.GetByID(ctx, id)
+	if err != nil {
+		logrus.Error(err)
+		return nil, err
+	}
+	return aDigimon, nil
 }
 
 func (du *digimonUsecase) Store(ctx context.Context, d *domain.Digimon) error {
+	if err := du.digimonRepo.Store(ctx, d); err != nil {
+		logrus.Error(err)
+		return err
+	}
 	return nil
 }

@@ -1,6 +1,6 @@
 本文章同時發佈於：
 
-- [Github(包含程式碼)]()
+- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY04)
 - [Medium]()
 - [iT 邦幫忙]()
 
@@ -10,9 +10,7 @@
 
 ---
 
-[//]: # "york TODO: 新增 DAY03 連結"
-
-大家好，繼昨天[DAY03]()Docker 的介紹後，接下來要介紹如何 Docker-Compose 來管理多個環境。
+大家好，繼昨天[DAY03](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY03)Docker 的介紹後，接下來要介紹如何 Docker-Compose 來管理多個環境。
 
 ## 為何需要 Docker-Compose ?
 
@@ -42,7 +40,7 @@
 
 在官網上都有把安裝的[教學](https://docs.docker.com/compose/install/)寫得很清楚了，這篇文章就關注實作而不是安裝了。
 
-## Docker-Compose 檔案配置
+## Docker-Compose 檔案配置([Example code](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY04))
 
 製作 Golang Server 的 `Dockerfile`，
 

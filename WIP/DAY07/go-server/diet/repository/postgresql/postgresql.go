@@ -7,8 +7,6 @@ import (
 	"go-server/domain"
 
 	"github.com/sirupsen/logrus"
-
-	_ "github.com/lib/pq"
 )
 
 type postgresqlDietRepository struct {
@@ -31,5 +29,13 @@ func (p *postgresqlDietRepository) GetByID(ctx context.Context, id string) (*dom
 }
 
 func (p *postgresqlDietRepository) Store(ctx context.Context, d *domain.Diet) error {
+	_, err := p.db.Exec(
+		"INSERT INTO diets (id, user_id, name) VALUES (?, ?, ?)",
+		d.ID, d.UserID, d.Name,
+	)
+	if err != nil {
+		logrus.Error(err)
+		return err
+	}
 	return nil
 }

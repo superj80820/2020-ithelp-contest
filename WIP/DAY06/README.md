@@ -71,7 +71,7 @@ Clean Architecturer 將更面想整體的 Code 而非 Code 的單一部分。
 
 ```go
 type Digimon struct {
-	UUID string
+  UUID string
   Name   string
   Status string
 }
