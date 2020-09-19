@@ -55,7 +55,7 @@
 
 ![](https://i.imgur.com/KI8pd9e.jpg)
 
-## Docs tool 介紹？
+## Docs tool 介紹
 
 - [mermaid-js](https://github.com/mermaid-js/mermaid): 提供用簡單的 Markdown 來撰寫流程圖的功能
 - [vscode-drawio](https://github.com/hediet/vscode-drawio): 可以讓 vscode 可以直接在`.jpg/.png`中編輯圖片並同步更新在 Markdown 中
