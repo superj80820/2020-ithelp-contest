@@ -86,7 +86,6 @@ Digimon-Service 結構圖 - 使用[vscode-drawio](https://github.com/hediet/vsco
 
 - 提供一個數碼蛋，讓 client 端可以領取。
 - 數碼蛋會隨著時間孵化。
-- 我們要定期培育數碼獸，不然他會死亡。
 
 ---
 
