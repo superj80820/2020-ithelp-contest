@@ -10,9 +10,7 @@
 
 ---
 
-[//]: # "york TODO: 新增 DAY05 連結"
-
-大家好，繼昨天[DAY05]() Docs tool 的介紹後，我們要利用這些 Docs 來產生 Golang Server 介面，並以 Clean Architecture 實作。
+大家好，繼昨天[DAY05](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY05) Docs tool 的介紹後，我們要利用這些 Docs 來產生 Golang Server 介面，並以 Clean Architecture 實作。
 
 ## 什麼是 Clean Architecture
 
@@ -43,29 +41,31 @@ Clean Architecturer 將更面想整體的 Code 而非 Code 的單一部分。
 
 我常看到 Server 專案的架構是傳統 MVC，但微服務溝通這層卻不知道往哪裡擺，有些直接放在 Controller，有些又特別拉出一層，導致每個專案架構差異慎大。現在不用管了統一放在`Repository`層！
 
-### Controller 層多了 Usecase 層
+### Controller/ 層多了 Usecase 層
 
-> 業務邏輯放置 Usecase 層，而 Controller 只負責交代如何把這些 Usecase 帶給 View 層
+> 業務邏輯放置 Usecase 層。而 Controller/Delivery 只負責交代如何把這些 Usecase 帶給 View 層。
 
-如果沒有 Usecase 層，常常會導致 Controller 層的邏輯多到滿出來，我常碰到的問題是 Controller 其實也是有許多邏輯適合分享，但是傳統 MVC 卻沒有方式去傳遞他，現在有 Usecase 層 Controller 層就清爽許多。
+如果沒有 Usecase 層，常常會導致 Controller 層的邏輯多到滿出來，我常碰到的問題是 Controller 其實也是有許多邏輯適合分享，但是傳統 MVC 卻沒有方式去傳遞他，現在有 Usecase 層，就會使 Controller 層就清爽許多。
+
+> 在沒有任何業務邏輯下 Controller 層更加專心負責`交付`，因此稱之為 Delivery 層會更加合適。
 
 ### View 層變得多樣且彈性
 
-由於 Controller 層負責交付 Usecase 給 View 層，所以
+由於 Delivery 層負責交付 Usecase 給 View 層，所以
 
-> 要更換任何 View 層只需要重寫 Controller 層，業務邏輯的 Usecase 是不需要改的
+> 要更換任何 View 層只需要重寫 Delivery 層，業務邏輯的 Usecase 是不需要改的
 
 這實在是非常棒！某次要從 Restful API 更換成 Websocket 介面時，我直接
 
 ![](https://i.imgur.com/F1iY76L.png)
 
-再回頭看看某些專案，Controller 層已經完全黏在 View 層，我只想大喊：「你為什麼不早說 QQ」。
+再回頭看看某些專案，只有 Controller 層導致業務邏輯已經完全黏在 View 層，我只想大喊：「你為什麼不早說 QQ」。
 
-順帶一提 MVC 的 View 其實最初是真的要有`看得到的頁面`的，因為以前的 Server 都是直接吐網站的，不過現在 Server 的設計已經跟過往大不相同，所以我喜歡把 View 稱為`要呈現給Client端的方法`，所以 Restful API, Websocket, gRPC 我都認為算是 View。
+順帶一提，MVC 的 View 其實最初是真的要有`看得到的網頁頁面`的情境，因為以前的 Server 都是直接吐網站的，不過現在 Server 的設計已經跟過往大不相同，所以我喜歡把 View 稱為`要呈現給Client端的方法`，所以 Restful API, Websocket, gRPC 我都認為算是一種 View。
 
 ### 給每層建立介面的 Domain 層
 
-除了 Controller 層可以替換，Model 也是可以替換的，比如說 RDBMS 要從 MySQL 換成 PostgreSQL。
+除了 Delivery 層可以替換，Repository 層也是可以替換的，比如說 RDBMS 要從 MySQL 換成 PostgreSQL。
 
 但要達成這個目標我們必須先訂好一個介面，比如說儲存 digimons table 可以先訂好以下介面:
 
@@ -86,6 +86,74 @@ type DigimonRepository interface {
 我們只需關心實作不同 DB 的儲存方式即可，所以這樣的特性造成:
 
 > 每層都高獨立性的架構
+
+## 為什麼更換 DB 引擎，只要介面不變就不會爆炸？
+
+如果你是從 Node.js 轉到 Golang，你可能會對這個概念感到陌生(就像我 XD)，以下舉一個 Node.js 大家常會遇到的困難，
+
+```javascript
+function callAPI(caller) {
+  caller.get("https://api");
+}
+```
+
+這時候會有一個問題：
+
+> 傳進來的 caller 真的有 get 這個 method 嗎？
+
+為了驗證我們會直接跑起來，
+
+```javascript
+callAPI(ACaller);
+// 因為沒有get這個method
+// 會顯示`Uncaught TypeError: caller.get is not a function`
+
+callAPI(BCaller);
+// 因為有get這個method，所以運作正常
+```
+
+但我們真的只能`跑起來`才能驗證`有沒有這個method`嗎？
+
+答案是不用的，那就是透過程式的靜態分析，在程式還沒跑起來前分析 type(型別)或者是 interface(介面)適合符合預期，所以剛剛的 callAPI 可以這樣加入 interface 給參數
+
+```javascript
+// interfaceA會檢查此參數是否有get method
+function callAPI(caller: interfaceA) {
+  caller.get("https://api");
+}
+// 如果a有get method就不會噴錯，而沒有就會噴錯
+callAPI(a);
+```
+
+回到原本不會爆炸的問題，我們可以替 DB 引擎`包上一層interface`，再用 JavaScript 來舉例:
+
+```javascript
+// 此code不能運行，為舉例的pseudocode
+interfaceA {
+  insert()
+}
+function insertRow(db: interface) {
+  db.insert("foo");
+}
+const postgresDB = {
+  insert(value) {
+    // 這裡才是真的DB引擎的insert，我們為他包裝了一層interface，使呼叫方不會爆炸
+    postgres.insert(value)
+  }
+}
+const mysqlDB = {
+  insert(value) {
+    // DB引擎換了，但是外層interface與postgresDB相同
+    mysqlDB.insert(value)
+  }
+}
+
+// 兩者都可以運行，因為都符合interfaceA的定義
+insertRow(postgresDB)
+insertRow(mysqlDB)
+```
+
+所以，Golang 因為有 interface 來跟使用的的程式說該要有哪些 method，更換 DB 引擎就不會爆炸了。
 
 ## Clean Architecturer 的高可測試性
 
