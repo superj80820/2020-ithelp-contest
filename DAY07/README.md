@@ -1,8 +1,8 @@
 本文章同時發佈於：
 
-- [Github(包含程式碼)]()
-- [Medium]()
-- [iT 邦幫忙]()
+- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY07)
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day7-%E5%A5%94%E6%94%BE%E7%9A%84-golang-%E5%8D%BB%E9%9A%B1%E8%97%8F%E8%91%97%E6%9C%89%E7%B4%80%E5%BE%8B%E7%9A%84%E6%9E%B6%E6%A7%8B-clean-architecture-%E5%AF%A6%E4%BD%9C%E7%AF%87-dd41610dcde7)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10241479)
 
 ```
 文章為自己的經驗與夥伴整理的內容，設計沒有標準答案，如有可以改進的地方，請告訴我，我會盡我所能的修改，謝謝大家～
