@@ -1,8 +1,8 @@
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY07)
-- [Medium]()
-- [iT 邦幫忙]()
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day8-%E8%AE%93%E4%BD%A0%E7%9A%84-backend-%E8%90%AC%E7%89%A9%E7%9A%86%E8%99%9B-%E8%90%AC%E4%BA%8B%E7%9A%86%E5%8F%AF%E6%B8%AC-clean-architecture-%E6%B8%AC%E8%A9%A6%E7%AF%87-324fddd7db9a)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10241698)
 
 ```
 文章為自己的經驗與夥伴整理的內容，設計沒有標準答案，如有可以改進的地方，請告訴我，我會盡我所能的修改，謝謝大家～
@@ -18,7 +18,7 @@
 
 你可能像我一樣曾經寫過這樣的程式碼:
 
-```golang
+```Go
 // ... 其他程式碼
 
 import "service"
@@ -43,7 +43,7 @@ func GetName() int {
 
 > 將所需的變數、實體、函示從外部帶入
 
-```golang
+```Go
 package logic
 
 import "service"
@@ -59,7 +59,7 @@ func GetName(nameService *service.Engine) int {
 
 那麼我們就可以從外部做一個假的`nameService`丟入了，
 
-```golang
+```Go
 // ... 其他程式碼
 
 import (
@@ -91,7 +91,7 @@ func TestGetName(t *testing.T) {
 
 ### Repository 層
 
-```golang
+```Go
 // ... 其他程式碼
 
 import (
@@ -153,7 +153,7 @@ func TestGetByID(t *testing.T) {
 
 ### Usecase 層
 
-```golang
+```Go
 // ... 其他程式碼
 
 import (
@@ -246,7 +246,7 @@ $ mockery --all --keeptree
 
 ### Delivery 層
 
-```golang
+```Go
 import (
 	"bytes"
 	"encoding/json"
