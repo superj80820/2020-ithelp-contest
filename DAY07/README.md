@@ -131,12 +131,9 @@ func (p *postgresqlDigimonRepository) GetByID(ctx context.Context, id string) (*
 // ... 其他程式碼
 ```
 
-[//]: # "yorktodo補充Day06的連結"
-[//]: # "yorktodo補充Day06的連結"
-
-- `講解1 - 定義好需要哪些依賴注入(DI)`: 這是 Clean Architecture 的核心之一，如[DAY06]()所述，`將依賴的事物由外部注入，而不是寫死在裡頭`。
+- `講解1 - 定義好需要哪些依賴注入(DI)`: 這是 Clean Architecture 的核心之一，如[DAY06](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY06)所述，`將依賴的事物由外部注入，而不是寫死在裡頭`。
 - `講解2 - 設計一個DI注入的function`: 有了`講解1`的定義，我們還需要一個注入的 function，將 db `確實`注入。為什麼要這樣呢？因為你是可以這樣產生實例的`postgresqlDigimonRepository{}`，可以發現其實沒有帶 db，但實際上還是可以運行。我們可以透過此 function 來避免這個情形。
-- `講解3 - 透過domain裡定義的interface來約束回傳值`: `domain.DigimonRepository`這個 interface 定義了有哪些方法`postgresqlDigimonRepository`必須要實作，如[DAY06]()所述，有了此 interface 才能讓呼叫的程式在`還沒run起來`就知道`哪些呼叫方法存在`。
+- `講解3 - 透過domain裡定義的interface來約束回傳值`: `domain.DigimonRepository`這個 interface 定義了有哪些方法`postgresqlDigimonRepository`必須要實作，如[DAY06](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY06)所述，有了此 interface 才能讓呼叫的程式在`還沒run起來`就知道`哪些呼叫方法存在`。
 - `講解4 - 實作domain.DigimonRepository interface定義的方法`: `GetByID`要確實符合 interface 定義的方法，不然 Golang 在運行前就會報錯。
 
 ### Usecase 層 - 業務邏輯的管轄處
