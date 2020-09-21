@@ -45,7 +45,7 @@ paths:
                 $ref: "#/components/schemas/DigimonInfo"
         "500":
           $ref: "#/components/responses/500InternalError"
-  /digimons/{digimonID}:foster:
+  /digimons/{digimonID}/foster:
     post:
       summary: 培育數碼獸
       description: 對數碼獸進行培育，以改善數碼獸的狀態

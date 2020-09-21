@@ -4,7 +4,7 @@ info:
   description: 提供孵化數碼蛋與培育等數碼寶貝養成服務
   version: 1.0.0
 servers:
-- url: https://localhost/api/v1
+  - url: https://localhost/api/v1
 paths:
   /digimons:
     post:
@@ -15,7 +15,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DigimonInfoRequest'
+              $ref: "#/components/schemas/DigimonInfoRequest"
         required: true
       responses:
         "200":
@@ -23,57 +23,57 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DigimonInfo'
+                $ref: "#/components/schemas/DigimonInfo"
         "500":
           description: 伺服器錯誤
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /digimons/{digimonID}:
     get:
       summary: 查看數碼獸狀態
       parameters:
-      - name: digimonID
-        in: path
-        description: 數碼蛋的唯一識別碼，格式為uuid v4
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: digimonID
+          in: path
+          description: 數碼蛋的唯一識別碼，格式為uuid v4
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: 數碼蛋的資訊
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DigimonInfo'
+                $ref: "#/components/schemas/DigimonInfo"
         "500":
           description: 伺服器錯誤
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-  /digimons/{digimonID}:foster:
+                $ref: "#/components/schemas/Error"
+  /digimons/{digimonID}/foster:
     post:
       summary: 培育數碼獸
       description: 對數碼獸進行培育，以改善數碼獸的狀態
       parameters:
-      - name: digimonID
-        in: path
-        description: 數碼蛋的唯一識別碼，格式為uuid v4
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: digimonID
+          in: path
+          description: 數碼蛋的唯一識別碼，格式為uuid v4
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         description: 培育的食物
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FosterRequest'
+              $ref: "#/components/schemas/FosterRequest"
         required: true
       responses:
         "200":
@@ -81,13 +81,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DigimonInfo'
+                $ref: "#/components/schemas/DigimonInfo"
         "500":
           description: 伺服器錯誤
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     DigimonInfo:
@@ -113,10 +113,10 @@ components:
       type: object
       properties:
         food:
-          $ref: '#/components/schemas/FosterRequest_food'
+          $ref: "#/components/schemas/FosterRequest_food"
     DigimonInfoRequest:
       required:
-      - name
+        - name
       type: object
       properties:
         name:
@@ -126,8 +126,8 @@ components:
         name: Agumon
     Error:
       required:
-      - code
-      - message
+        - code
+        - message
       type: object
       properties:
         message:
@@ -155,4 +155,4 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"

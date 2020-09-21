@@ -10,11 +10,14 @@
 
 ---
 
-大家好，繼昨天[DAY06](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY06)的介紹後，相信大家已經對 Clean Architecture 的稍有概念了，接下來將介紹實作的部分，相信會讓各位更有感覺。
+大家好，繼昨天[DAY06](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY06)的介紹後，相信大家已經對 Clean Architecture 的稍有概念了，接下來將介紹實作的部分，相信會讓各位更理解 Clean Architecture 的好處。
 
-## 安裝 Golang
+不過，你也可以先進入 DAY07 的資料夾底下把 Server 運行起來，這樣會比較有感覺。
 
-關於安裝官網寫得很清楚，在此貼上[連結](https://golang.org/doc/install)就不多做介紹了。
+```bash
+$ cd DAY07
+$ docker-compose up
+```
 
 ## 透過[swagger-generator](https://github.com/swagger-api/swagger-codegen)來產生 Server 介面
 
@@ -29,13 +32,13 @@ $ docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
 
 swagger-generator 會自動產生以下的 code:
 
-![](https://i.imgur.com/0Vy5hSS.png)
+![](https://i.imgur.com/pnEyUT8.png)
 
 接下來我們將一步一步實作成以下的 code:
 
-![](https://i.imgur.com/jUVGMvq.png)
+![](https://i.imgur.com/DcBLIhV.png)
 
-## 實作
+## 來實作吧！
 
 ![](https://i.imgur.com/8Qj2ZR9.png)
 
@@ -51,7 +54,7 @@ swagger-generator 會自動產生以下的 code:
 
 所以必須建立建立 diet(培育)與 digimon(數碼獸)兩個 interface 在 domain 層。
 
-![](https://i.imgur.com/PGMnqVX.png)
+![](https://i.imgur.com/HOkkLhs.png)
 
 以`digimon.go`來說，
 
@@ -94,7 +97,7 @@ type DigimonUsecase interface {
 
 定義好了 domain 層，就可以依照 domain 來設計 repository 層，
 
-![](https://i.imgur.com/31yWBp2.png)
+![](https://i.imgur.com/UtfWMqy.png)
 
 可以看到雖然 diet 與 digimon 目前都是用 PostgreSQL 來實作，但是我們都將 repository 獨立拉出來，以便將不同的 DB 功能做區分。
 
@@ -138,7 +141,7 @@ func (p *postgresqlDigimonRepository) GetByID(ctx context.Context, id string) (*
 
 ### Usecase 層 - 業務邏輯的管轄處
 
-![](https://i.imgur.com/qG2nm6B.png)
+![](https://i.imgur.com/BVDeh0X.png)
 
 ```go
 // ... 其他程式碼
@@ -175,7 +178,7 @@ func (du *digimonUsecase) GetByID(ctx context.Context, id string) (*domain.Digim
 
 ### Delivery 層 - 交付業務邏輯給引擎的跑腿工
 
-![](https://i.imgur.com/hJJsWq6.png)
+![](https://i.imgur.com/AJ6zmsa.png)
 
 看到這邊大家應該已經發現，Clean Architecture 的重點就是:
 
@@ -306,6 +309,39 @@ func main() {
 - `講解4 - 將Repository層透過依賴注入(DI)來注入Usecase層`: 同`講解3`，對 usecase 層來說 repository 層也是外部依賴，注入下去！
 - `講解5 - 將Usecase層透過依賴注入(DI)來注入Delivery層`: 這裡要注意，除了注入以外，還有將 Golang-Gin 的引擎丟入，讓 delivery 層來綁定。
 - `講解 6 - 將Golang-Gin跑起來！`
+
+進入到我們 DAY07 資料夾底下，使用 docker-compose 把 Golang-Server 與 DB 跑起來吧！
+
+```bash
+$ cd DAY07
+$ docker-compose up
+```
+
+![](https://i.imgur.com/s42lh1p.png)
+
+Work!
+
+## 透過[Insomnia Designer](https://insomnia.rest/products/designer/)測試一下
+
+創建數碼蛋，
+
+![](https://i.imgur.com/6mrhFsX.png)
+
+查看數碼蛋狀態，
+
+![](https://i.imgur.com/T0osPBU.png)
+
+培育數碼獸，
+
+![](https://i.imgur.com/DWNakcv.png)
+
+如果你有安裝[Postico](https://eggerapps.at/postico/)，可以去看看 diets table 是不是真的有吃了食物，
+
+![](https://i.imgur.com/jdfwHFc.png)
+
+嗯！滿滿的蘋果，看我還不飽炸你，亞古獸 XD ～
+
+![](https://i.imgur.com/ZKDEbdn.png)
 
 ## 參考
 

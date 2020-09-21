@@ -10,7 +10,7 @@ services:
       - "5000:5000"
     depends_on:
       - db
-    entrypoint: go run main.go
+    entrypoint: go run cmd/main.go
     restart: always
   db:
     image: postgres:9.6.5-alpine

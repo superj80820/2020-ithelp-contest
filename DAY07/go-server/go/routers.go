@@ -64,7 +64,7 @@ var routes = Routes{
 	Route{
 		"DigimonsDigimonIDfosterPost",
 		strings.ToUpper("Post"),
-		"/api/v1/digimons/{digimonID}:foster",
+		"/api/v1/digimons/{digimonID}/foster",
 		DigimonsDigimonIDfosterPost,
 	},
 

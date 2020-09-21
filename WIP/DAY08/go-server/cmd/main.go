@@ -24,6 +24,14 @@ import (
 	_ "github.com/lib/pq"
 )
 
+func init() {
+	viper.SetConfigFile(".env")
+	viper.SetConfigType("dotenv")
+	if err := viper.ReadInConfig(); err != nil {
+		logrus.Fatal("Fatal error config file: %v\n", err)
+	}
+}
+
 func main() {
 	logrus.Info("HTTP server started")
 
