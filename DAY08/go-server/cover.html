@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">go-server/diet/repository/postgresql/postgresql.go (64.3%)</option>
+				
+				<option value="file1">go-server/diet/usecase/diet_usecase.go (100.0%)</option>
+				
+				<option value="file2">go-server/digimon/delivery/http/digimon_handler.go (40.5%)</option>
+				
+				<option value="file3">go-server/digimon/repository/postgresql/postgresql.go (64.7%)</option>
+				
+				<option value="file4">go-server/digimon/usecase/digimon_usecase.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package postgresql
+
+import (
+        "context"
+        "database/sql"
+
+        "go-server/domain"
+
+        "github.com/gofrs/uuid"
+        "github.com/sirupsen/logrus"
+)
+
+type postgresqlDietRepository struct {
+        db *sql.DB
+}
+
+// NewPostgresqlDietRepository ...
+func NewPostgresqlDietRepository(db *sql.DB) domain.DietRepository <span class="cov8" title="1">{
+        return &amp;postgresqlDietRepository{db}
+}</span>
+
+func (p *postgresqlDietRepository) GetByID(ctx context.Context, id string) (*domain.Diet, error) <span class="cov8" title="1">{
+        row := p.db.QueryRow("SELECT id FROM diets WHERE id = $1", id)
+        d := &amp;domain.Diet{}
+        if err := row.Scan(&amp;d.ID, &amp;d.UserID, &amp;d.Name); err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return d, nil</span>
+}
+
+func (p *postgresqlDietRepository) Store(ctx context.Context, d *domain.Diet) error <span class="cov8" title="1">{
+        if d.ID == "" </span><span class="cov0" title="0">{
+                d.ID = uuid.Must(uuid.NewV4()).String()
+        }</span>
+        <span class="cov8" title="1">_, err := p.db.Exec(
+                "INSERT INTO diets (id, user_id, name) VALUES ($1, $2, $3)",
+                d.ID, d.UserID, d.Name,
+        )
+        if err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err, d)
+                return err
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package usecase
+
+import (
+        "context"
+
+        "go-server/domain"
+
+        "github.com/sirupsen/logrus"
+)
+
+type dietUsecase struct {
+        dietRepo domain.DietRepository
+}
+
+// NewDietUsecase ...
+func NewDietUsecase(dietRepo domain.DietRepository) domain.DietUsecase <span class="cov8" title="1">{
+        return &amp;dietUsecase{
+                dietRepo,
+        }
+}</span>
+
+func (du *dietUsecase) GetByID(ctx context.Context, id string) (*domain.Diet, error) <span class="cov8" title="1">{
+        aDiet, err := du.dietRepo.GetByID(ctx, id)
+        if err != nil </span><span class="cov8" title="1">{
+                logrus.Error(err)
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return aDiet, nil</span>
+}
+
+func (du *dietUsecase) Store(ctx context.Context, d *domain.Diet) error <span class="cov8" title="1">{
+        if err := du.dietRepo.Store(ctx, d); err != nil </span><span class="cov8" title="1">{
+                logrus.Error(err)
+                return err
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package http
+
+import (
+        "go-server/domain"
+
+        swagger "go-server/go"
+
+        "github.com/gin-gonic/gin"
+        "github.com/sirupsen/logrus"
+)
+
+// DigimonHandler ...
+type DigimonHandler struct {
+        DigimonUsecase domain.DigimonUsecase
+        DietUsecase    domain.DietUsecase
+}
+
+// NewDigimonHandler ...
+func NewDigimonHandler(e *gin.Engine, digimonUsecase domain.DigimonUsecase, dietUsecase domain.DietUsecase) <span class="cov0" title="0">{
+        handler := &amp;DigimonHandler{
+                DigimonUsecase: digimonUsecase,
+                DietUsecase:    dietUsecase,
+        }
+
+        e.GET("/api/v1/digimons/:digimonID", handler.GetDigimonByDigimonID)
+        e.POST("/api/v1/digimons", handler.PostToCreateDigimon)
+        e.POST("/api/v1/digimons/:digimonID/foster", handler.PostToFosterDigimon)
+}</span>
+
+// GetDigimonByDigimonID ...
+func (d *DigimonHandler) GetDigimonByDigimonID(c *gin.Context) <span class="cov8" title="1">{
+        digimonID := c.Param("digimonID")
+
+        anDigimon, err := d.DigimonUsecase.GetByID(c, digimonID)
+        if err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                c.JSON(500, &amp;swagger.ModelError{
+                        Code:    3000,
+                        Message: "Internal error. Query digimon error",
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="1">c.JSON(200, &amp;swagger.DigimonInfo{
+                Id:     anDigimon.ID,
+                Name:   anDigimon.Name,
+                Status: anDigimon.Status,
+        })</span>
+}
+
+// PostToCreateDigimon ...
+func (d *DigimonHandler) PostToCreateDigimon(c *gin.Context) <span class="cov8" title="1">{
+        var body swagger.DigimonInfoRequest
+        if err := c.BindJSON(&amp;body); err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                c.JSON(500, &amp;swagger.ModelError{
+                        Code:    3000,
+                        Message: "Internal error. Parsing failed",
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">aDigimon := domain.Digimon{
+                Name: body.Name,
+        }
+        if err := d.DigimonUsecase.Store(c, &amp;aDigimon); err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                c.JSON(500, &amp;swagger.ModelError{
+                        Code:    3000,
+                        Message: "Internal error. Store failed",
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="1">c.JSON(200, swagger.DigimonInfo{
+                Id:     aDigimon.ID,
+                Name:   aDigimon.Name,
+                Status: aDigimon.Status,
+        })</span>
+}
+
+// PostToFosterDigimon ...
+func (d *DigimonHandler) PostToFosterDigimon(c *gin.Context) <span class="cov8" title="1">{
+        digimonID := c.Param("digimonID")
+
+        var body swagger.FosterRequest
+        if err := c.BindJSON(&amp;body); err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                c.JSON(500, &amp;swagger.ModelError{
+                        Code:    3000,
+                        Message: "Internal error. Parsing failed",
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="1">if err := d.DietUsecase.Store(c, &amp;domain.Diet{
+                UserID: digimonID,
+                Name:   body.Food.Name,
+        }); err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                c.JSON(500, &amp;swagger.ModelError{
+                        Code:    3000,
+                        Message: "Internal error. Store failed",
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="1">if err := d.DigimonUsecase.UpdateStatus(c, &amp;domain.Digimon{
+                ID:     digimonID,
+                Status: "good",
+        }); err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                c.JSON(500, &amp;swagger.ModelError{
+                        Code:    3000,
+                        Message: "Internal error. Store failed",
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(204, nil)</span>
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package postgresql
+
+import (
+        "context"
+        "database/sql"
+
+        "go-server/domain"
+
+        "github.com/sirupsen/logrus"
+)
+
+type postgresqlDigimonRepository struct {
+        db *sql.DB
+}
+
+// NewpostgresqlDigimonRepository ...
+func NewpostgresqlDigimonRepository(db *sql.DB) domain.DigimonRepository <span class="cov8" title="1">{
+        return &amp;postgresqlDigimonRepository{db}
+}</span>
+
+func (p *postgresqlDigimonRepository) GetByID(ctx context.Context, id string) (*domain.Digimon, error) <span class="cov8" title="1">{
+        row := p.db.QueryRow("SELECT id, name, status FROM digimons WHERE id =$1", id)
+        d := &amp;domain.Digimon{}
+        if err := row.Scan(&amp;d.ID, &amp;d.Name, &amp;d.Status); err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return d, nil</span>
+}
+
+func (p *postgresqlDigimonRepository) Store(ctx context.Context, d *domain.Digimon) error <span class="cov8" title="1">{
+        _, err := p.db.Exec(
+                "INSERT INTO digimons (id, name, status) VALUES ($1, $2, $3)",
+                d.ID, d.Name, d.Status,
+        )
+        if err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                return err
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (p *postgresqlDigimonRepository) UpdateStatus(ctx context.Context, d *domain.Digimon) error <span class="cov8" title="1">{
+        _, err := p.db.Exec(
+                "UPDATE digimons SET status=$1 WHERE id=$2",
+                d.Status, d.ID,
+        )
+        if err != nil </span><span class="cov0" title="0">{
+                logrus.Error(err)
+                return err
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package usecase
+
+import (
+        "context"
+
+        "go-server/domain"
+
+        "errors"
+
+        "github.com/gofrs/uuid"
+        "github.com/sirupsen/logrus"
+)
+
+type digimonUsecase struct {
+        digimonRepo domain.DigimonRepository
+}
+
+// NewDigimonUsecase ...
+func NewDigimonUsecase(digimonRepo domain.DigimonRepository) domain.DigimonUsecase <span class="cov8" title="1">{
+        return &amp;digimonUsecase{
+                digimonRepo: digimonRepo,
+        }
+}</span>
+
+func (du *digimonUsecase) GetByID(ctx context.Context, id string) (*domain.Digimon, error) <span class="cov8" title="1">{
+        aDigimon, err := du.digimonRepo.GetByID(ctx, id)
+        if err != nil </span><span class="cov8" title="1">{
+                logrus.Error(err)
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return aDigimon, nil</span>
+}
+
+func (du *digimonUsecase) Store(ctx context.Context, d *domain.Digimon) error <span class="cov8" title="1">{
+        if d.ID == "" </span><span class="cov8" title="1">{
+                d.ID = uuid.Must(uuid.NewV4()).String()
+        }</span>
+        <span class="cov8" title="1">if d.Status == "" </span><span class="cov8" title="1">{
+                d.Status = "good"
+        }</span>
+        <span class="cov8" title="1">if err := du.digimonRepo.Store(ctx, d); err != nil </span><span class="cov8" title="1">{
+                logrus.Error(err)
+                return err
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (du *digimonUsecase) UpdateStatus(ctx context.Context, d *domain.Digimon) error <span class="cov8" title="1">{
+        if d.Status == "" </span><span class="cov8" title="1">{
+                err := errors.New("Status is blank")
+                logrus.Error(err)
+                return err
+        }</span>
+
+        <span class="cov8" title="1">if err := du.digimonRepo.UpdateStatus(ctx, d); err != nil </span><span class="cov8" title="1">{
+                logrus.Error(err)
+                return err
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
