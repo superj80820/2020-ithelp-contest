@@ -1,8 +1,8 @@
 本文章同時發佈於：
 
-- [Github(包含程式碼)]()
-- [Medium]()
-- [iT 邦幫忙]()
+- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY06)
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day6-%E4%BD%A0%E7%9A%84-backend-%E5%8F%AF%E4%BB%A5%E6%9B%B4%E6%9C%89%E5%BD%88%E6%80%A7%E4%B8%80%E9%BB%9E-clean-architecture-%E6%A6%82%E5%BF%B5%E7%AF%87-ab74d6d910f4)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10240228)
 
 ```
 文章為自己的經驗與夥伴整理的內容，設計沒有標準答案，如有可以改進的地方，請告訴我，我會盡我所能的修改，謝謝大家～
