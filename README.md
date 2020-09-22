@@ -14,7 +14,7 @@
 6. [DAY6 - 你的 Backend 可以更有彈性一點 - Clean Architecture 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY06)
 7. [DAY7 - 奔放的 Golang，卻隱藏著有紀律的架構！ - Clean Architecture 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY07)
 8. [DAY8 - 讓你的 Backend 萬物皆虛，萬事皆可測 - Clean Architecture 測試篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY08)
-9. [DAY9 - 哪泥！可以把 call service 當成一個 function call？！ - gRPC 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY09)
+9. [DAY9 - 神奇的 gRPC，讓你把 call service 當成一個 function call - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY09)
 10. [DAY10 - 聽說 Vue3.0 出了，那就做一個前端來串接 Server 吧](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY010)
 11. [DAY11 - 前端 call 後端也可以像 function call 一樣！？這什麼巫術 - gRPC-Web 前端篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY011)
 12. [DAY12 - 前端 call 後端也可以像 function call 一樣！？這什麼巫術 - gRPC-Web envoy 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY012)

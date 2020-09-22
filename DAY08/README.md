@@ -1,6 +1,6 @@
 本文章同時發佈於：
 
-- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY07)
+- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY08)
 - [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day8-%E8%AE%93%E4%BD%A0%E7%9A%84-backend-%E8%90%AC%E7%89%A9%E7%9A%86%E8%99%9B-%E8%90%AC%E4%BA%8B%E7%9A%86%E5%8F%AF%E6%B8%AC-clean-architecture-%E6%B8%AC%E8%A9%A6%E7%AF%87-324fddd7db9a)
 - [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10241698)
 
