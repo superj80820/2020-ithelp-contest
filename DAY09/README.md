@@ -10,7 +10,7 @@
 
 ---
 
-大家好，繼昨天[DAY09](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY07)的介紹後，Clean Architecture 架構告一段落，現在我們來思考一下，如果依照此架構設計好後端為服務，如下圖，可能會產生什麼問題？
+大家好，繼昨天[DAY09](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY07)的介紹後，Clean Architecture 架構告一段落。現在我們來思考一下，如果後端微服務龐大起來，如下圖，可能會產生什麼問題？
 
 ## 微服務溝通的災難與解決
 
@@ -25,7 +25,7 @@
 
 > 讓 Service 的溝通變成 function call 吧！
 
-於是有了[RPC(Remote Procedure Call)](https://zh.wikipedia.org/zh-tw/%E9%81%A0%E7%A8%8B%E9%81%8E%E7%A8%8B%E8%AA%BF%E7%94%A8)的誕生，流程圖如下，其實他得概念並不複雜，單純就是把`call function與return result間的流程加了一道網路轉換`
+而這件事可以透過[RPC(Remote Procedure Call)](https://zh.wikipedia.org/zh-tw/%E9%81%A0%E7%A8%8B%E9%81%8E%E7%A8%8B%E8%AA%BF%E7%94%A8)達成，流程圖如下，其實他得概念並不複雜，單純就是把`call function與return result間的流程加了一道網路轉換`
 
 ![](https://i.imgur.com/i51FX43.png)
 
@@ -38,7 +38,7 @@
 5. 將封包轉換成 function 的參數格式
 6. 執行此 function，並回傳 result
 
-事實上 RPC 在 1976 年就誕生了，並不是什麼新技術，當時為了要處理多台電腦的通性採用此方法，後來衍伸出了[XML-RPC](https://zh.wikipedia.org/wiki/XML-RPC)、[SOAP](https://zh.wikipedia.org/wiki/%E7%AE%80%E5%8D%95%E5%AF%B9%E8%B1%A1%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE)這樣的協定，但在定義與使用上都有些繁瑣古老，最後 Google 發展出了[gRPC](https://zh.wikipedia.org/wiki/GRPC)，為現代的微服務提供簡單高效強大的 RPC 協定。
+事實上 RPC 在 1976 年就誕生了，並不是什麼新技術，當時為了要處理多台電腦的通信採用此方法，後來衍伸出了[XML-RPC](https://zh.wikipedia.org/wiki/XML-RPC)、[SOAP](https://zh.wikipedia.org/wiki/%E7%AE%80%E5%8D%95%E5%AF%B9%E8%B1%A1%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE)這樣的協定，但在定義與使用上都有些繁瑣古老，後來 Google 發展出了[gRPC](https://zh.wikipedia.org/wiki/GRPC)，為現代的微服務提供簡單高效強大的 RPC 協定。
 
 ## 新世代的 RPC - gRPC
 
@@ -49,7 +49,7 @@
 
 以 Golang 來說，這些定好的 Protobuf schema 透過官方的[codegen](https://www.grpc.io/docs/languages/go/quickstart/) tool，直接產生實際的 function 與 struct。
 
-而你實際使用時，只要直接 call 此 function 並且帶對參數就可以了，因為是 function call，所以要帶什麼參數更加的直觀，而編譯器會告訴你是否帶對參數也更佳並且安全。
+而你實際使用時，只要直接 call 此 function 並且帶對參數就可以了，因為是 function call，所以要帶什麼參數更加的直觀，而編譯器會告訴你是否帶對參數也更佳安全。
 
 ### 多種便利的傳輸方案
 
@@ -57,11 +57,11 @@ gRPC 在定義 function 時，可以針對不同場景，使用多種方案:
 
 - 單向傳輸(Unary): 機制上跟 Restful API 一樣，就是一個 request 一個 response，只不過是透過了 gRPC 協定。
 - 單向串流(Streaming): 你可以想像成訂閱機制，client 透過`一個 request`訂閱 server 後，server 就可以發送`無數次 response`。
-- 雙向串流(Bidirectional streaming): 你可以想像成 Websocket，但是在傳輸格式有透過 schema 定義，client 可以發送無數次 request，server 也可以發送無數次 response
+- 雙向串流(Bidirectional streaming): 機制就像 Websocket，但是在傳輸格式有透過 schema 定義，client 可以發送無數次 request，server 也可以發送無數次 response
 
 ## 別忘了 RPC 還是透過網路
 
-微服務很大的痛就是網路，試想看看 function call 會有可能會因為網路不穩而失敗，這會多難麻煩 XD。
+微服務很大的痛就是網路，試想看看 function call 有可能會因為網路不穩而失敗，這會多難麻煩 XD。
 
 gRPC 可用此方法處理，Deadlines/Timeouts 來設定 timeout，[go-grpc-middleware](https://godoc.org/github.com/grpc-ecosystem/go-grpc-middleware/retry)來 retry。
 
