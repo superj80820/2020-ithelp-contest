@@ -1,0 +1,158 @@
+openapi: 3.0.1
+info:
+  title: Digimon Service API
+  description: 提供孵化數碼蛋與培育等數碼寶貝養成服務
+  version: 1.0.0
+servers:
+  - url: https://localhost/api/v1
+paths:
+  /digimons:
+    post:
+      summary: 產生數碼蛋
+      description: 產生一顆數碼蛋，供request端養成
+      requestBody:
+        description: 客製數碼蛋的請求
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DigimonInfoRequest"
+        required: true
+      responses:
+        "200":
+          description: 數碼蛋的資訊
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DigimonInfo"
+        "500":
+          description: 伺服器錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /digimons/{digimonID}:
+    get:
+      summary: 查看數碼獸狀態
+      parameters:
+        - name: digimonID
+          in: path
+          description: 數碼蛋的唯一識別碼，格式為uuid v4
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 數碼蛋的資訊
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DigimonInfo"
+        "500":
+          description: 伺服器錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /digimons/{digimonID}/foster:
+    post:
+      summary: 培育數碼獸
+      description: 對數碼獸進行培育，以改善數碼獸的狀態
+      parameters:
+        - name: digimonID
+          in: path
+          description: 數碼蛋的唯一識別碼，格式為uuid v4
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: 培育的食物
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FosterRequest"
+        required: true
+      responses:
+        "200":
+          description: 培育完畢後的數碼獸的資訊
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DigimonInfo"
+        "500":
+          description: 伺服器錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    DigimonInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 數碼蛋的唯一識別碼，格式為uuid v4
+          example: 56e400bd-c98b-49b9-ad8c-0607800e026f
+        name:
+          type: string
+          description: 數碼蛋的名稱
+          example: Agumon
+        status:
+          type: string
+          description: 數碼蛋此時的狀態
+          example: healthy
+      example:
+        name: Agumon
+        id: 56e400bd-c98b-49b9-ad8c-0607800e026f
+        status: healthy
+    FosterRequest:
+      type: object
+      properties:
+        food:
+          $ref: "#/components/schemas/FosterRequest_food"
+    DigimonInfoRequest:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: 數碼蛋的名字
+      example:
+        name: Agumon
+    Error:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        message:
+          type: string
+          description: 錯誤訊息
+        code:
+          type: number
+          description: |
+            錯誤代碼:
+             * `3000` - Internal error
+      example:
+        message: Internal error. Parsing failed
+        code: 3000
+    FosterRequest_food:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 食物名稱
+          example: apple
+      description: 培育所使用的食物
+  responses:
+    "500InternalError":
+      description: 伺服器錯誤
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
