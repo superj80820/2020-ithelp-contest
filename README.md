@@ -18,7 +18,7 @@
 10. [DAY10 - 神奇的 gRPC，讓你把 call service 當成一個 function call - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY010)
 11. [DAY11 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY011)
 12. [DAY12 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY012)
-13. [DAY13 - 前端 call 後端也可以像 function call 一樣！？這什麼巫術 - gRPC-Web streaming 篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY013)
+13. [DAY13 - Clean Architecture 的力量！無痛從 Restful API 轉換成 gRPC Server](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY013)
 
 ## 參考文章
 

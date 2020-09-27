@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package digimon;
+
+service Digimon {
+  rpc Create (CreateRequest) returns (CreateResponse) {}
+  rpc Query (QueryRequest) returns (QueryResponse) {}
+  rpc Foster (FosterRequest) returns (FosterResponse) {}
+}
+
+// Requests
+
+message CreateRequest {
+  string name = 1;
+}
+
+message QueryRequest {
+  string id = 1;
+}
+
+message FosterRequest {
+  message Food {
+    string name = 1;
+  }
+
+  string id = 1;
+  Food food = 2;
+}
+
+// Responses
+
+message CreateResponse {
+  string id = 1;
+  string name = 2;
+  string status = 3;
+}
+
+message QueryResponse {
+  string id = 1;
+  string name = 2;
+  string status = 3;
+}
+
+message FosterResponse {
+}
