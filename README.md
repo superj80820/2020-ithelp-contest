@@ -19,6 +19,7 @@
 11. [DAY11 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY011)
 12. [DAY12 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY012)
 13. [DAY13 - Clean Architecture 的力量！無痛從 Restful API 轉換成 gRPC Server](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY013)
+14. [DAY14 - 以 gRPC 實作兩個 Service 的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY014)
 
 ## 參考文章
 
