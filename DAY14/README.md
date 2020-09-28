@@ -1,8 +1,8 @@
 本文章同時發佈於：
 
-- [Github(包含程式碼)]()
-- [Medium]()
-- [iT 邦幫忙]()
+- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY14)
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day14-%E4%BB%A5-grpc-%E5%AF%A6%E4%BD%9C%E5%85%A9%E5%80%8B%E5%BE%AE%E6%9C%8D%E5%8B%99%E7%9A%84%E6%BA%9D%E9%80%9A-283968a42d0a)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10245943)
 
 ```
 文章為自己的經驗與夥伴整理的內容，設計沒有標準答案，如有可以改進的地方，請告訴我，我會盡我所能的修改，謝謝大家～
