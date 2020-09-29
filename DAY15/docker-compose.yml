@@ -1,0 +1,49 @@
+version: "3.5"
+
+services:
+  envoy:
+    image: envoyproxy/envoy:v1.15.0
+    volumes:
+      - ${PWD}/envoy.yaml:/etc/envoy/envoy.yaml
+    ports:
+      - "8080:8080"
+      - "9901:9901"
+    entrypoint: /usr/local/bin/envoy -c /etc/envoy/envoy.yaml -l trace --log-path /tmp/envoy_info.log
+    depends_on:
+      - server
+    restart: always
+  server:
+    image: golang:1.14.6-alpine
+    volumes:
+      - .:/server
+    working_dir: /server/go-server
+    ports:
+      - "6000:6000"
+    depends_on:
+      - db
+    entrypoint: go run cmd/main.go
+    restart: always
+  weather:
+    image: golang:1.14.6-alpine
+    volumes:
+      - .:/server
+    working_dir: /server/weather
+    ports:
+      - "6100:6100"
+    entrypoint: go run cmd/main.go
+    restart: always
+  db:
+    image: postgres:9.6.5-alpine
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./go-server/initdb.sh:/docker-entrypoint-initdb.d/init.sh
+  web:
+    image: httpd:2.4
+    volumes:
+      - ${PWD}/web/web-client:/usr/local/apache2/htdocs/
+    ports:
+      - "8060:80"
+    depends_on:
+      - envoy

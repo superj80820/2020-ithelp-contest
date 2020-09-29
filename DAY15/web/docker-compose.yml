@@ -1,0 +1,20 @@
+version: "3"
+services:
+  envoy:
+    build:
+      context: ./
+      dockerfile: ./docker/envoy/Dockerfile
+    image: grpcweb/envoy
+    ports:
+      - "8080:8080"
+      - "9901:9901"
+    links:
+      - server
+  server:
+    image: golang:1.14.6-alpine
+    volumes:
+      - ${PWD}:/server
+    working_dir: /server
+    ports:
+      - "8070:8070"
+    entrypoint: go run server/main.go
