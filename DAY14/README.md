@@ -14,7 +14,9 @@
 
 接下來要再設計一個`專門拿取天氣`的 Weather-Service，並以雙向串流提供特定`位置A`的天氣。我們假定數碼獸都在`位置A`，透過與 Weather-Service 溝通我們可以獲得數碼獸所在位置的天氣。
 
-![](./digimon-service.drawio.png)
+[//]: #"./digimon-service.drawio.png"
+
+![](https://i.imgur.com/nt0oZrI.png)
 
 ## 實際運作
 
@@ -25,22 +27,7 @@ gRPC schemas:
 
 以下流程可以與上方 schema 做對照，會比較清楚，
 
-```mermaid
-sequenceDiagram
-    participant c as client
-    participant d as Digimon-Service
-    participant w as Weather-Service
-    c->>d: gRPC.Digimon.Create<br>創建數碼獸
-    d-->>c: 回傳數碼獸資訊
-    loop Server-Stream串流
-      c->>d: gRPC.Digimon.QueryStream<br>以數碼獸ID撈取數碼獸資訊
-      loop 雙向串流
-        d->>w: gRPC.Weather.Query<br>撈取此數碼獸'位置A'的天氣
-        w-->>d: 回傳天氣
-      end
-      d-->>c: 回傳數碼獸的資訊與天氣
-    end
-```
+[![](https://mermaid.ink/img/eyJjb2RlIjoiXG5zZXF1ZW5jZURpYWdyYW1cbiAgICBwYXJ0aWNpcGFudCBjIGFzIGNsaWVudFxuICAgIHBhcnRpY2lwYW50IGQgYXMgRGlnaW1vbi1TZXJ2aWNlXG4gICAgcGFydGljaXBhbnQgdyBhcyBXZWF0aGVyLVNlcnZpY2VcbiAgICBjLT4-ZDogZ1JQQy5EaWdpbW9uLkNyZWF0ZTxicj7libXlu7rmlbjnorznjbhcbiAgICBkLS0-PmM6IOWbnuWCs-aVuOeivOeNuOizh-ioilxuICAgIGxvb3AgU2VydmVyLVN0cmVhbeS4sua1gVxuICAgICAgYy0-PmQ6IGdSUEMuRGlnaW1vbi5RdWVyeVN0cmVhbTxicj7ku6XmlbjnorznjbhJROaSiOWPluaVuOeivOeNuOizh-ioilxuICAgICAgbG9vcCDpm5nlkJHkuLLmtYFcbiAgICAgICAgZC0-Pnc6IGdSUEMuV2VhdGhlci5RdWVyeTxicj7mkojlj5bmraTmlbjnorznjbgn5L2N572uQSfnmoTlpKnmsKNcbiAgICAgICAgdy0tPj5kOiDlm57lgrPlpKnmsKNcbiAgICAgIGVuZFxuICAgICAgZC0tPj5jOiDlm57lgrPmlbjnorznjbjnmoTos4foqIroiIflpKnmsKNcbiAgICBlbmRcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In19)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiXG5zZXF1ZW5jZURpYWdyYW1cbiAgICBwYXJ0aWNpcGFudCBjIGFzIGNsaWVudFxuICAgIHBhcnRpY2lwYW50IGQgYXMgRGlnaW1vbi1TZXJ2aWNlXG4gICAgcGFydGljaXBhbnQgdyBhcyBXZWF0aGVyLVNlcnZpY2VcbiAgICBjLT4-ZDogZ1JQQy5EaWdpbW9uLkNyZWF0ZTxicj7libXlu7rmlbjnorznjbhcbiAgICBkLS0-PmM6IOWbnuWCs-aVuOeivOeNuOizh-ioilxuICAgIGxvb3AgU2VydmVyLVN0cmVhbeS4sua1gVxuICAgICAgYy0-PmQ6IGdSUEMuRGlnaW1vbi5RdWVyeVN0cmVhbTxicj7ku6XmlbjnorznjbhJROaSiOWPluaVuOeivOeNuOizh-ioilxuICAgICAgbG9vcCDpm5nlkJHkuLLmtYFcbiAgICAgICAgZC0-Pnc6IGdSUEMuV2VhdGhlci5RdWVyeTxicj7mkojlj5bmraTmlbjnorznjbgn5L2N572uQSfnmoTlpKnmsKNcbiAgICAgICAgdy0tPj5kOiDlm57lgrPlpKnmsKNcbiAgICAgIGVuZFxuICAgICAgZC0tPj5jOiDlm57lgrPmlbjnorznjbjnmoTos4foqIroiIflpKnmsKNcbiAgICBlbmRcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In19)
 
 要特別注意的是，[gRPC.Digimon](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY14/schemas/digimon/schema.proto)的
 
