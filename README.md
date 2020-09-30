@@ -21,6 +21,7 @@
 13. [DAY13 - Clean Architecture 的力量！無痛從 Restful API 轉換成 gRPC Server](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY013)
 14. [DAY14 - 以 gRPC 實作兩個微服務的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY014)
 15. [DAY15 - 以 gRPC-Web 實作前端與後端的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY015)
+16. [DAY16 - Kubernetes！管理一切微服務的世界樹](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY016)
 
 ## 參考文章
 
