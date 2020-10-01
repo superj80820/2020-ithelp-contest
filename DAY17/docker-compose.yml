@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  envoy:
+    image: superj80820/digimon-envoy
+    ports:
+      - "8080:8080"
+      - "9901:9901"
+    entrypoint: /usr/local/bin/envoy -c /etc/envoy/envoy.yaml -l trace --log-path /tmp/envoy_info.log
+    depends_on:
+      - server
+    restart: always
+  server:
+    image: superj80820/digimon-service
+    ports:
+      - "6000:6000"
+    depends_on:
+      - db
+    entrypoint: go run cmd/main.go
+    restart: always
+  weather:
+    image: superj80820/weather-service
+    ports:
+      - "6100:6100"
+    entrypoint: go run cmd/main.go
+    restart: always
+  db:
+    image: superj80820/digimon-db
+    ports:
+      - "5432:5432"
+    restart: always
+  web:
+    image: superj80820/digimon-web
+    ports:
+      - "8060:80"
+    depends_on:
+      - envoy
