@@ -57,7 +57,7 @@ K8s 會先啟動一個 Master node，底下會有許多的 Worker Node，而 Wor
 
 K8s 主要就是把多台機器加以抽象，使他們就像一台大機器工你操作。
 
-而 K8s 最大目標是管理容器，而不管理運行容器的 VM，不過他依然有提供相關方案來管理 VM，但你使用的平台必須要有支援`Cluster Autoscaler(CA)`
+而 K8s 一開始的目標是管理容器，而不管理運行容器的 VM，不過後來有新增`Cluster Autoscaler(CA)`方案來管理 VM，但你使用的平台必須要有支援。
 
 ## HPA、VPA、CA
 
