@@ -1,7 +1,7 @@
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY17)
-- [Medium]()
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day17-kompose-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92-kubernetes-%E4%B8%8D%E6%98%AF%E5%A4%A2-93c10868e0ee)
 - [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10247631)
 
 ```
