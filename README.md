@@ -15,13 +15,14 @@
 7. [DAY7 - 奔放的 Golang，卻隱藏著有紀律的架構！ - Clean Architecture 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY07)
 8. [DAY8 - 讓你的 Backend 萬物皆虛，萬事皆可測 - Clean Architecture 測試篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY08)
 9. [DAY9 - 神奇的 gRPC，讓你把 call service 當成一個 function call - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY09)
-10. [DAY10 - 神奇的 gRPC，讓你把 call service 當成一個 function call - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY010)
-11. [DAY11 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY011)
-12. [DAY12 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY012)
-13. [DAY13 - Clean Architecture 的力量！無痛從 Restful API 轉換成 gRPC Server](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY013)
-14. [DAY14 - 以 gRPC 實作兩個微服務的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY014)
-15. [DAY15 - 以 gRPC-Web 實作前端與後端的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY015)
-16. [DAY16 - Kubernetes！管理一切微服務的世界樹](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY016)
+10. [DAY10 - 神奇的 gRPC，讓你把 call service 當成一個 function call - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY10)
+11. [DAY11 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY11)
+12. [DAY12 - gRPC-Web，讓你的前端也吃到 gRPC 的惡魔果實 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY12)
+13. [DAY13 - Clean Architecture 的力量！無痛從 Restful API 轉換成 gRPC Server](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY13)
+14. [DAY14 - 以 gRPC 實作兩個微服務的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY14)
+15. [DAY15 - 以 gRPC-Web 實作前端與後端的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY15)
+16. [DAY16 - Kubernetes！管理一切微服務的世界樹](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY16)
+17. [DAY17 - Kompose！快速學習 Kubernetes 不是夢](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY17)
 
 ## 參考文章
 
