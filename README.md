@@ -23,6 +23,9 @@
 15. [DAY15 - 以 gRPC-Web 實作前端與後端的溝通](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY15)
 16. [DAY16 - Kubernetes！管理一切微服務的世界樹](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY16)
 17. [DAY17 - Kompose！快速學習 Kubernetes 不是夢](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY17)
+18. [DAY18 - 了解 K8s 中的 Pod、Service、Deployment](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY18)
+19. [DAY19 - Ingress](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY19)
+20. [DAY20 - Helm](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
 
 ## 參考文章
 
