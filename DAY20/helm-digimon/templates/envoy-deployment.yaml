@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: envoy
+  name: envoy
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: envoy
+    spec:
+      containers:
+        - command:
+            - /usr/local/bin/envoy
+            - -c
+            - /etc/envoy/envoy.yaml
+            - -l
+            - trace
+            - --log-path
+            - /tmp/envoy_info.log
+          image: superj80820/digimon-envoy
+          name: envoy
+          ports:
+            - containerPort: 8080
+            - containerPort: 9901
+          resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: weather
+  name: weather
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: weather
+    spec:
+      containers:
+        - command:
+            - go
+            - run
+            - cmd/main.go
+          image: superj80820/weather-service
+          name: weather
+          ports:
+            - containerPort: 6100
+          resources: {}
+      restartPolicy: Always
+status: {}
