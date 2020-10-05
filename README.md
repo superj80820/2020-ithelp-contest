@@ -24,8 +24,9 @@
 16. [DAY16 - Kubernetes！管理一切微服務的世界樹](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY16)
 17. [DAY17 - Kompose！快速學習 Kubernetes 不是夢](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY17)
 18. [DAY18 - 了解 K8s 中的 Pod、Service、Deployment](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY18)
-19. [DAY19 - Ingress](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY19)
-20. [DAY20 - Helm](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
+19. [DAY19 - 了解 K8s 中的大門神！Ingress](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY19)
+20. [DAY20 - 利用 Helm 把 K8s 元件都包裝起來吧！](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
+21. [DAY21 - Istio 是什麼，原來是容器間通訊的妻管嚴嗎！？](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
 
 ## 參考文章
 

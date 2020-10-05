@@ -1,3 +1,9 @@
+本文章同時發佈於：
+
+- [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY11)
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day11-grpc-web-%E8%AE%93%E4%BD%A0%E7%9A%84%E5%89%8D%E7%AB%AF%E4%B9%9F%E5%90%83%E5%88%B0-grpc-%E7%9A%84%E6%83%A1%E9%AD%94%E6%9E%9C%E5%AF%A6-%E6%A6%82%E5%BF%B5%E7%AF%87-cc001c9fec5b)
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10243651)
+
 ```
 文章為自己的經驗與夥伴整理的內容，設計沒有標準答案，如有可以改進的地方，請告訴我，我會盡我所能的修改，謝謝大家～
 ```

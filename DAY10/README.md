@@ -1,7 +1,7 @@
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY10)
-- [Medium]()
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day10-%E7%A5%9E%E5%A5%87%E7%9A%84-grpc-%E8%AE%93%E4%BD%A0%E6%8A%8A-call-service-%E7%95%B6%E6%88%90%E4%B8%80%E5%80%8B-function-call-%E5%AF%A6%E4%BD%9C%E7%AF%87-a447b3e76f3b)
 - [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10242947)
 
 ```

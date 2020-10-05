@@ -1,6 +1,7 @@
 本文章同時發佈於：
 
 - [Github(包含程式碼)](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
+- [Medium](https://medium.com/%E9%AB%92%E6%A1%B6%E5%AD%90/day20-%E5%88%A9%E7%94%A8-helm-%E6%8A%8A-k8s-%E5%85%83%E4%BB%B6%E9%83%BD%E5%8C%85%E8%A3%9D%E8%B5%B7%E4%BE%86%E5%90%A7-951a9e184f2f)
 - [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10249122)
 
 ```
