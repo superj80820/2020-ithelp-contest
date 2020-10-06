@@ -26,7 +26,8 @@
 18. [DAY18 - 了解 K8s 中的 Pod、Service、Deployment](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY18)
 19. [DAY19 - 了解 K8s 中的大門神！Ingress](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY19)
 20. [DAY20 - 利用 Helm 把 K8s 元件都包裝起來吧！](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
-21. [DAY21 - Istio 是什麼，原來是容器間通訊的妻管嚴嗎！？](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
+21. [DAY21 - Istio 是什麼，原來是容器間通訊的妻管嚴嗎！？ - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
+22. [DAY22 - Istio 是什麼，原來是容器間通訊的妻管嚴嗎！？ - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY22)
 
 ## 參考文章
 
