@@ -49,7 +49,11 @@ $ minikube addons enable ingress
 $ minikube ip
 ```
 
-將特定`api.backend.com`與`web.backend.com`轉換成 minikube ip，以確保 ingress 正常運作，
+將特定`api.backend.com`與`web.backend.com`轉換成 minikube ip，以確保 ingress 正常運作，輸入以下指令開啟文件並儲存，
+
+```bash
+$ open /etc/hosts
+```
 
 ![](https://i.imgur.com/mc9HuVS.png)
 
