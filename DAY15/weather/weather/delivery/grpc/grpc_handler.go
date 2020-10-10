@@ -59,7 +59,7 @@ func (w *WeatherHandler) Query(srv pb.Weather_QueryServer) error {
 		if err != nil {
 			logrus.Error(err)
 		}
-
+		logrus.Info("Send")
 		srv.Send(&pb.QueryResponse{
 			Location: aWeather.Location,
 			Weather:  gRPCWriterEnum,
