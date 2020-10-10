@@ -30,6 +30,7 @@
 22. [DAY22 - Istio 是什麼，原來是容器間通訊的妻管嚴嗎！？ - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY22)
 23. [DAY23 - Istio Gateway、VirtualService元件 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY23)
 24. [DAY24 - Istio Gateway、VirtualService元件 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY24)
+25. [DAY25 - 用 Istio DestinationRule元件來流量管理 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY25)
 
 ## 參考文章
 
