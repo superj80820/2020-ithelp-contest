@@ -28,9 +28,10 @@
 20. [DAY20 - 利用 Helm 把 K8s 元件都包裝起來吧！](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
 21. [DAY21 - Istio 是什麼，原來是容器間通訊的妻管嚴嗎！？ - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY20)
 22. [DAY22 - Istio 是什麼，原來是容器間通訊的妻管嚴嗎！？ - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY22)
-23. [DAY23 - Istio Gateway、VirtualService元件 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY23)
-24. [DAY24 - Istio Gateway、VirtualService元件 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY24)
-25. [DAY25 - 用 Istio DestinationRule元件來流量管理 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY25)
+23. [DAY23 - Istio Gateway、VirtualService 元件 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY23)
+24. [DAY24 - Istio Gateway、VirtualService 元件 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY24)
+25. [DAY25 - 用 Istio DestinationRule 元件來流量管理 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY25)
+26. [DAY26 - 用 Istio DestinationRule 元件來流量管理 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY26)
 
 ## 參考文章
 
