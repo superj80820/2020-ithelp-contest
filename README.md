@@ -32,6 +32,10 @@
 24. [DAY24 - Istio Gateway、VirtualService 元件 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY24)
 25. [DAY25 - 用 Istio DestinationRule 元件來流量管理 - 概念篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY25)
 26. [DAY26 - 用 Istio DestinationRule 元件來流量管理 - 實作篇](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY26)
+27. [DAY27 - 使用 Istio 的 Kiali 可視化後端的 Service Mesh](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY27)
+28. [DAY28 - 使用 Istio 的 Grafana 可視化後端的流量](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY27)
+29. [DAY29 - 使用 Istio 的 Jaeger 追蹤在各個 Service 穿梭的請求](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY27)
+30. [DAY30 - 使用 Istio 的 PrometheusJaeger 監控流量請求](https://github.com/superj80820/2020-ithelp-contest/blob/master/DAY27)
 
 ## 參考文章
 
